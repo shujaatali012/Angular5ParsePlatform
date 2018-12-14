@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
-Application will connect to parse platform for backend calls. Angular 5 is used to develop the application and Bootstrap 4 is used for responsive frontend, 
+Responsive, Angular5 and Bootstrap4 web application connected with Parse Platfom.
 
 **Features**
 
@@ -22,6 +22,7 @@ Set values on environment.json to configure parse platform:
 `SERVER_URL: '<YOUR-SERVER_URL>',`
 `PARSE_APP_ID: '<YOUR-PARSE_APP_ID>',`
 `PARSE_CLIENT_KEY: '<YOUR-PARSE_CLIENT_KEY>'`
+
 
 ## Development server
 

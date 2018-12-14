@@ -1,0 +1,335 @@
+/******************** custom style for site *********************/
+
+/* customize bootstrap style - start */
+body {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 1.5;
+  color: #17a2b8;
+  text-align: left;
+  background-color: #fcfcfc;
+}
+
+/* app loading style */
+.app-loading {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,.7);
+}
+
+  .app-loading .logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .app-loading .spinner {
+    height: 100px;
+    width: 100px;
+    animation: rotate 2s linear infinite;
+    transform-origin: center center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #42729B;
+    }
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+/* app loading style - end */
+
+h5 {
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.5;
+  color: inherit;
+}
+
+input {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4e5760;
+}
+
+.label-bold {
+  font-weight: 500 !important;
+}
+
+.custom-label {
+  font-size: 1rem;
+  font-weight: 200;
+  color: #4e5760;
+}
+
+.btn-lg {
+  font-weight: 600;
+}
+
+.form-control-lg {
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+a {
+  font-size: 1rem;
+  font-weight: 200 !important;
+  color: #30a2b8 !important;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+  a:hover {
+    color: #117a8b !important;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.error-message {
+  color: #ff0018;
+}
+
+.has-success {
+  border: solid 1px #04892d;
+}
+
+.has-error {
+  border: solid 1px #ff0018;
+}
+
+/* login/register style */
+
+.highlighted-section {
+  margin-top: 3rem;
+  background-color: #e2f2ff;
+  border-radius: .3rem;
+  padding: .3rem 1rem;
+  box-shadow: 0 0 8px 0 rgba(195,195,195,.74);
+  -webkit-box-shadow: 0 0 8px 0 rgba(195,195,195,.74);
+}
+
+.content-center {
+  justify-content: center
+}
+
+.custom-icon {
+  font-size: 4rem;
+  color: #30a2b8;
+}
+
+.custom-heading {
+  color: #30a2b8;
+}
+
+/* products page style */
+
+.header-row {
+  background-color: #17a2b8;
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.nav-link {
+  display: block;
+  padding: 0rem 1rem !important;
+}
+
+a, .btn, .dropdown-menu {
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+}
+
+.display-none {
+  display: none;
+}
+
+.left-radius {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.right-radius {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.custom-normal-font {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.9rem;
+}
+
+.image-rounded {
+  border-radius: 50%;
+}
+
+.profile-dropdown {
+  position: absolute;
+  transform: translate3d(-108px, 50px, 0px);
+  top: 0px;
+  left: 0px;
+  will-change: transform;
+  padding: 0 0 .5rem 0;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .255em;
+  vertical-align: .255em;
+  content: "";
+  border: none !important;
+}
+
+.noti-title {
+  background-color: #20a9ba;
+  font-weight: 600;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  padding: .25rem 0;
+  border-bottom: solid .25rem #1a96aa;
+}
+
+  .noti-title label {
+    color: #fff;
+  }
+
+  .noti-title .text-underline {
+    text-decoration: underline;
+  }
+
+.dropdown-divider-custom {
+  height: 0;
+  margin: 0 0 .5rem 0;
+  overflow: hidden;
+  border-top: 1px solid #e9ecef;
+}
+
+.page-header {
+  padding: .25rem;
+  border-radius: .25rem;
+  color: #17a2b8;
+  background-color: #e2f2ff;
+  box-shadow: 0 0 8px 0 rgba(195,195,195,.74);
+  -webkit-box-shadow: 0 0 8px 0 rgba(195,195,195,.74);
+}
+
+  .page-header > h2 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 2.5rem;
+  }
+
+.card {
+  border: solid 1px #e2f2ff;
+  box-shadow: 0 0 8px 0 rgba(195,195,195,.74);
+  -webkit-box-shadow: 0 0 8px 0 rgba(195,195,195,.74);
+}
+
+.card-block {
+  padding: .40rem;
+  background-color: #e2f2ff;
+}
+
+/* sweet alert */
+
+.swal2-popup {
+  width: 20rem !important;
+}
+
+  .swal2-popup .swal2-styled:focus {
+    outline: none;
+    box-shadow: none !important;
+  }
+
+.dropdown-menu.dropdown-menu-right.profile-dropdown.show {
+  position: absolute;
+}
+
+.form-control:focus {
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0rem rgba(0,123,255,.25) !important;
+  box-shadow: 0 0 0 0rem rgba(0,123,255,.25) !important;
+}
+
+/**** media query ****/
+
+@media only screen and (max-width:767px) {
+  .highlighted-section {
+    margin-top: 0px !important;
+  }
+
+  .login-screen {
+    min-height: 100% !important;
+    position: absolute;
+  }
+
+  .nav-link {
+    padding: 0rem 0.4rem !important;
+  }
+
+  .navbar {
+    padding: .5rem 0rem !important;
+  }
+
+  .login-footer {
+    bottom: 0 !important;
+    position: absolute;
+    width: 91%;
+  }
+}

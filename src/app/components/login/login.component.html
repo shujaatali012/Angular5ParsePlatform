@@ -1,0 +1,55 @@
+<div class="container-fluid" [@fadeInAnimation]>
+  <div class="row content-center">
+    
+    <div class="col-md-4 highlighted-section login-screen">
+
+      <div class="inner-header mt-3 mb-3 text-center">
+        <i class="fa fa-user-circle-o custom-icon"></i>
+      </div>
+
+      <hr>
+
+      <form class="form-signin" *ngIf="formResetToggle" name="userSignInForm" #form="ngForm" novalidate (ngSubmit)="onSignIn(form)">
+
+        <div class="form-label-group mb-3">
+          <label for="txtEmail" class="control-label">Email&nbsp;<span class="error-message">*</span></label>
+          <input type="text" id="txtEmail" name="email" [(ngModel)]="userLogin.email" #email="ngModel" required maxlength="200" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && email.valid, 'has-error' : form.submitted && isShowErrors && !email.valid }" placeholder="Email" tabindex="1" autofocus />
+          <span class="error-message" *ngIf="isShowErrors && form.submitted && !email.valid && email.errors.required">Email is required</span>
+          <span class="error-message" *ngIf="isShowErrors && form.submitted && !email.valid && email.errors.maxlength">Maximum 10 characters allowed for email.</span>
+          <span class="error-message" *ngIf="isShowErrors && form.submitted && !email.valid && email.errors?.pattern">Please enter valid email</span>
+        </div>
+
+        <div class="form-label-group mb-3">
+          <label for="txtPassword">Password&nbsp;<span class="error-message">*</span></label>
+          <input type="password" id="txtPassword" name="password" [(ngModel)]="userLogin.password" #password="ngModel" required minlength="6" maxlength="50" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && password.valid, 'has-error' : form.submitted && isShowErrors && !password.valid }" placeholder="Password" tabindex="2" />
+          <span class="error-message" *ngIf="isShowErrors && form.submitted && !password.valid && password.errors.required">Password is required</span>
+          <span class="error-message" *ngIf="isShowErrors && form.submitted && !password.valid && password.errors.minlength">Minimum 6 characters allowed for password.</span>
+          <span class="error-message" *ngIf="isShowErrors && form.submitted && !password.valid && password.errors.maxlength">Maximum 50 characters allowed for password.</span>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="checkRememberMe" name="isRememberMe" [(ngModel)]="userLogin.isRememberMe" #isRememberMe="ngModel" >
+          <label class="custom-control-label custom-label" for="checkRememberMe">Remember Me?</label>
+        </div>
+
+        <hr>
+
+        <button type="submit" class="btn btn-lg btn-info btn-block mb-3">Sign in</button>
+      </form>
+
+      <div class="form-label-group mb-3 text-center">
+        <a [routerLink]="['/register']">Register</a>
+      </div>
+
+      <div class="login-footer">
+        <hr>
+
+        <p class="mt-4 mb-3 text-muted text-center">Copyright © 2018-2019</p>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+

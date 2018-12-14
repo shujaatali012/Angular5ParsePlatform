@@ -1,0 +1,128 @@
+<div class="container-fluid" [@fadeInAnimation]>
+  <div class="row content-center">
+    <div class="col-md-4 highlighted-section">
+
+      <div class="inner-header mt-3 mb-3">
+        <h5 class="custom-heading">Sign up</h5>
+      </div>
+
+      <hr>
+
+      <form *ngIf="formResetToggle" name="userSignUpForm" #form="ngForm" novalidate (ngSubmit)="onSignUp(form)">
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" attr.id="txtFirstName" name="firstName" [(ngModel)]="userRegister.firstName" #firstName="ngModel" maxlength="14" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && firstName.valid, 'has-error' : form.submitted && isShowErrors && !firstName.valid }" placeholder="First Name" tabindex="1">
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !firstName.valid && firstName.errors.maxlength">Maximum 15 characters allowed for first name.</span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" attr.id="txtLastName" name="lastName" [(ngModel)]="userRegister.lastName" #lastName="ngModel" maxlength="15" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && lastName.valid, 'has-error' : form.submitted && isShowErrors && !lastName.valid }" placeholder="Last Name" tabindex="2">
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !lastName.valid && lastName.errors.maxlength">Maximum 15 characters allowed for last name.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+              <input type="text" attr.id="txtPhone" name="phone" [(ngModel)]="userRegister.phone" #phone="ngModel" required minlength="10" maxlength="10" [pattern]="mobilePattern" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && phone.valid, 'has-error' : form.submitted && isShowErrors && !phone.valid }" placeholder="Phone * (05XXXXXXXX)" tabindex="3">
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !phone.valid && phone.errors.required">Phone is required.</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !phone.valid && phone.errors.maxlength">Minimum 10 characters allowed for phone.</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !phone.valid && phone.errors.maxlength">Maximum 10 characters allowed for phone.</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !phone.valid && phone.errors?.pattern">Please enter valid phone.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+              <input type="text" id="txtEmail" name="email" [(ngModel)]="userRegister.email" #email="ngModel" required maxlength="200" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && email.valid, 'has-error' : form.submitted && isShowErrors && !email.valid }" placeholder="Email *" tabindex="4" />
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !email.valid && email.errors.required">Email is required</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !email.valid && email.errors.maxlength">Maximum 10 characters allowed for email.</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !email.valid && email.errors?.pattern">Please enter valid email</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="password" id="txtPassword" name="password" [(ngModel)]="userRegister.password" #password="ngModel" required minlength="6" maxlength="50" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && password.valid, 'has-error' : form.submitted && isShowErrors && !password.valid }" placeholder="Password *" tabindex="5" />
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !password.valid && password.errors.required">Password is required</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !password.valid && password.errors.minlength">Minimum 6 characters allowed for password.</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !password.valid && password.errors.maxlength">Maximum 50 characters allowed for password.</span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="password" id="txtConfirmPassword" name="confirmPassword" [(ngModel)]="userRegister.confirmPassword" #confirmPassword="ngModel" required minlength="6" maxlength="50" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && confirmPassword.valid, 'has-error' : form.submitted && isShowErrors && !confirmPassword.valid }" placeholder="Password *" tabindex="6" />
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !confirmPassword.valid && confirmPassword.errors.required">Confirm password is required</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !confirmPassword.valid && confirmPassword.errors.minlength">Minimum 6 characters allowed for confirm password.</span>
+              <span class="error-message" *ngIf="isShowErrors && form.submitted && !confirmPassword.valid && confirmPassword.errors.maxlength">Maximum 50 characters allowed for confirm password.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="input-group">
+
+              <label class="input-group-btn">
+                <span class="btn btn-lg btn-info btn-block left-radius custom-normal-font">
+                  Browse Image
+                  <input type="file" class="display-none" id="inputFile" />
+                </span>
+              </label>
+
+              <input type="text" id="fakeFileValue" class="form-control form-control-lg input-lg right-radius" readonly />
+            </div>
+            <p class="text-success" id="success-message" style="display:none;">Profile picture uploaded successfully.</p>
+            <p class="text-danger" id="error-message" style="display:none;">Profile picture not uploaded, please try again.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+              <div class="checkbox mb-3">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="checkIsAgree" name="isAgree" [(ngModel)]="userRegister.isAgree" #isAgree="ngModel" required>
+                  <label class="custom-control-label custom-label" for="checkIsAgree">I agree all terms and conditions.</label>
+
+                  <br />
+                  <span class="error-message" *ngIf="isShowErrors && form.submitted && !isAgree.valid && isAgree.errors.required">Please agree terms and conditions to signup.</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <button type="submit" class="btn btn-lg btn-info btn-block mb-2">Sign up</button>
+          </div>
+        </div>
+
+      </form>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group text-center">
+            <a [routerLink]="['/login']" class="link-info">Login</a>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p class="mt-4 mb-3 text-muted text-center">Copyright © 2018-2019</p>
+    </div>
+  </div>
+</div>

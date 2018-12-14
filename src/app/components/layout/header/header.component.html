@@ -1,0 +1,133 @@
+<!-- header -->
+<div class="row header-row">
+  <div class="col-md-12">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+
+      <a class="navbar-brand" href="#">&lt;/&gt;</a>
+
+      <ul class="navbar-nav ml-md-auto">
+        <li class="list-inline-item dropdown notif show">
+          <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="true">
+            <img src="assets/images/default-profile-image.jpg" style="height:45px;" alt="Profile Image" class="image-rounded">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right profile-dropdown" x-placement="bottom-end">
+
+            <div class="noti-title text-center">
+              <label class="text-overflow text-underline">Welcome</label>
+              <label class="text-overflow"><small>{{currentUser?.username }}</small> </label>
+            </div>
+
+            <div class="dropdown-divider-custom"></div>
+
+            <a class="dropdown-item notify-item" href="javascript:;" data-target="#profileModal" data-toggle="modal"><i class="fa fa-user-o"></i>&nbsp;Profile</a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item notify-item" href="javascript:;" data-target="#resetModal" data-toggle="modal"><i class="fa fa-key"></i>&nbsp;Reset Password</a>
+
+            <div class="dropdown-divider"></div>
+
+            <a href="javascript:;" (click)="onLogout();" class="dropdown-item notify-item">
+              <i class="fa fa-power-off"></i> <span>Logout</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- view profile model -->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profileModalLabel">Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-4">
+                <span class="label-bold">UserName:</span>
+              </div>
+              <div class="col-8">
+                <span>{{currentUser?.email}}</span>
+              </div>
+            </div>
+            <hr />
+
+            <div class="row">
+              <div class="col-4">
+                <span class="label-bold">Email:</span>
+              </div>
+              <div class="col-8">
+                <span>{{currentUser?.email}}</span>
+              </div>
+            </div>
+            <hr />
+
+            <div class="row">
+              <div class="col-4">
+                <span class="label-bold">Name:</span>
+              </div>
+              <div class="col-8">
+                <span>{{currentUser?.firstName}}{{currentUser?.lastName}}</span>
+              </div>
+            </div>
+            <hr />
+
+            <div class="row">
+              <div class="col-4">
+                <span class="label-bold">Phone:</span>
+              </div>
+              <div class="col-8">
+                <span>{{currentUser?.phone}}</span>
+              </div>
+            </div>
+            <hr />
+
+            <div class="row">
+              <div class="col-4">
+                <span class="label-bold">Created At:</span>
+              </div>
+              <div class="col-8">
+                <span>{{currentUser?.createdAt | date}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- reset password model -->
+    <div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="resetModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <form class="modal-content" name="resetForm" *ngIf="formResetToggle" #form="ngForm" novalidate (ngSubmit)="onReset(form)">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resetModalLabel">Reset Password</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="common-form">
+              <div class="row form-group">
+                <div class="col-12">
+                  <label for="txtEmail" class="control-label">Email&nbsp;<span class="error-message">*</span></label>
+                  <input type="text" id="txtEmail" name="email" [(ngModel)]="resetPassword.email" #email="ngModel" required maxlength="200" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" class="form-control form-control-lg input-lg" [ngClass]="{'has-success' : form.submitted && isShowErrors && email.valid, 'has-error' : form.submitted && isShowErrors && !email.valid }" placeholder="Email" tabindex="1" autofocus />
+                  <span class="error-message" *ngIf="form.submitted && !email.valid && email.errors.required">Email is required</span>
+                  <span class="error-message" *ngIf="form.submitted && !email.valid && email.errors.maxlength">Maximum 10 characters allowed for email.</span>
+                  <span class="error-message" *ngIf="form.submitted && !email.valid && email.errors?.pattern">Please enter valid email</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info">Reset</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

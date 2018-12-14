@@ -50,12 +50,14 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         $('#fakeFileValue').val(this.files[0].name);
 
         self.parseService.uploadProfilePicture(this.files[0].name, this.files[0])
-          .then((parseFile: Parse.File) => {
+          .subscribe(parseFile => {
+
             self.userRegister.profilePictureUrl = JSON.parse(JSON.stringify(parseFile)).url;
             $('#success-message').css('display', 'block');
             $('#error-message').css('display', 'none');
-          })
-          .catch((error) => {
+
+          }, error => {
+
             $('#success-message').css('display', 'none');
             $('#error-message').css('display', 'block');
 
@@ -68,6 +70,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
               confirmButtonColor: '#f25a5a',
               timer: 3000
             });
+
           });
       }
       else {
@@ -84,29 +87,34 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
     });
   }
-  
+
   onSignUp(form: NgForm) {
     this.isShowErrors = true;
 
     if (form.valid) {
+
       this.parseService.signUp(this.userRegister)
-        .then((response) => {
-          swal({
-            title: 'Success',
-            text: 'You are successfully signed up',
-            type: 'success',
-            showConfirmButton: true,
-            confirmButtonText: 'Ok',
-            confirmButtonColor: '#28a745'
-          }).then((result) => {
-            if (result.value) {
-              this.isShowErrors = false;
-              this.resetForm();
-              this.router.navigate(['/products']);
-            }
-          });
-        })
-        .catch((error) => {
+        .subscribe(parseUser => {
+
+          if (parseUser != null && parseUser != undefined) {
+
+            swal({
+              title: 'Success',
+              text: 'You are successfully signed up',
+              type: 'success',
+              showConfirmButton: true,
+              confirmButtonText: 'Ok',
+              confirmButtonColor: '#28a745'
+            }).then((result) => {
+              if (result.value) {
+                this.isShowErrors = false;
+                this.resetForm();
+                this.router.navigate(['/products']);
+              }
+            });
+
+          }
+        }, error => {
           swal({
             title: 'Error',
             text: error,
@@ -117,6 +125,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             timer: 3000
           });
         });
+
     }
   }
 

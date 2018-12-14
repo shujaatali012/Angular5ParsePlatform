@@ -37,31 +37,37 @@ export class LoginComponent implements OnInit {
 
     if (form.valid) {
       this.parseService.signIn(this.userLogin)
-        .then((response) => {
-          
-          if (this.userLogin.isRememberMe) {
-            if (localStorage.getItem('rememberMe')) {
-              localStorage.removeItem('rememberMe');
+        .subscribe(parseUser => {
+
+          if (parseUser != null && parseUser != undefined) {
+            if (this.userLogin.isRememberMe) {
+              if (localStorage.getItem('rememberMe')) {
+                localStorage.removeItem('rememberMe');
+              }
+
+              localStorage.setItem('rememberMe', this.userLogin.isRememberMe.toString());
             }
-            localStorage.setItem('rememberMe', JSON.stringify(this.userLogin));
+
+            this.isShowErrors = false;
+            this.resetForm();
+
+            this.router.navigate(['/products']);
           }
 
-          this.isShowErrors = false;
-          this.resetForm();
+        },
+          error => {
 
-          this.router.navigate(['/products']);
-        })
-        .catch((error) => {
-          swal({
-            title: 'Error',
-            text: error,
-            type: 'error',
-            showConfirmButton: true,
-            confirmButtonText: 'Ok',
-            confirmButtonColor: '#f25a5a',
-            timer: 3000
+            swal({
+              title: 'Error',
+              text: error,
+              type: 'error',
+              showConfirmButton: true,
+              confirmButtonText: 'Ok',
+              confirmButtonColor: '#f25a5a',
+              timer: 3000
+            });
+
           });
-        });
     }
   }
 

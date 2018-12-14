@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   currentUser: any = null;
 
   formResetToggle: boolean = true;
-  
+
   @ViewChild('form')
   private form;
 
@@ -38,17 +38,20 @@ export class HeaderComponent implements OnInit {
   onLogout() {
 
     this.parseService.logOut()
-      .then((response) => {
+      .subscribe(parseUser => {
 
-        if (localStorage.key(0) != null || localStorage.key(0) != undefined && localStorage.key(0).indexOf('Parse') >= 0) {
+        if (parseUser != null && parseUser != undefined) {
+
+          if (localStorage.key(0) != null || localStorage.key(0) != undefined && localStorage.key(0).indexOf('Parse') >= 0) {
             if (localStorage.getItem(localStorage.key(0)) != null || localStorage.getItem(localStorage.key(0)) != undefined) {
-            localStorage.removeItem(localStorage.key(0));
+              localStorage.removeItem(localStorage.key(0));
+            }
           }
+
+          this.router.navigate(['/login']);
         }
 
-        this.router.navigate(['/login']);
-      })
-      .catch((error) => {
+      }, error => {
         swal({
           title: 'Error',
           text: error,
@@ -58,20 +61,20 @@ export class HeaderComponent implements OnInit {
           confirmButtonColor: '#f25a5a',
           timer: 3000
         });
-      });
 
+      });
   }
 
   onReset(form: NgForm) {
 
     if (form.valid) {
+
       this.parseService.resetPassword(this.resetPassword.email)
-        .then((response) => {
+        .subscribe(parseUser => {
 
           this.resetForm();
           this.onLogout();
-        })
-        .catch((error) => {
+        }, error => {
           swal({
             title: 'Error',
             text: error,
@@ -83,7 +86,6 @@ export class HeaderComponent implements OnInit {
           });
         });
     }
-
   }
 
   private resetForm(replace = false) {

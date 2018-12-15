@@ -5,94 +5,39 @@
   <!--inner contents -->
   <div class="row">
     <div class="col-md-12">
-      <div class="page-header mt-3 mb-3">
-        <h2>
-          Latest - <small>Latest parse products</small>
-        </h2>
+      <div class="page-header mt-3 mb-3 pl-3 pt-3 pb-3">
+        <span class="inner-title">Latest products</span>
       </div>
 
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img class="card-img-top" alt="Product Thumbnail First" src="assets/images/default-product-image.jpg" />
-            <div class="card-block">
-              <h5 class="card-title">
-                Product name
-              </h5>
-              <p class="card-text">
-                Product description
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img class="card-img-top" alt="Product Thumbnail Second" src="assets/images/default-product-image.jpg" />
-            <div class="card-block">
-              <h5 class="card-title">
-                Product name
-              </h5>
-              <p class="card-text">
-                Product description
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img class="card-img-top" alt="Product Thumbnail Third" src="assets/images/default-product-image.jpg" />
-            <div class="card-block">
-              <h5 class="card-title">
-                Product name
-              </h5>
-              <p class="card-text">
-                Product description
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="row" *ngIf="products != null && products != undefined">
 
-      <div class="row">
-        <div class="col-md-4 mb-5">
-          <div class="card">
-            <img class="card-img-top" alt="Product Thumbnail First" src="assets/images/default-product-image.jpg" />
-            <div class="card-block">
-              <h5 class="card-title">
-                Product name
-              </h5>
-              <p class="card-text">
-                Product description
-              </p>
+        <div class="col-md-3 col-sm-6 mb-4" *ngFor="let product of products">
+          <div class="product-card">
+            <div class="product-image">
+              <a href="#">
+                <img class="img-first" alt="{{product.name}}" src="{{product.image}}" />
+              </a>
+
+              <ul class="features">
+                <li><span data-balloon="Color" data-balloon-pos="left">{{product.color}}</span></li>
+                <li><span data-balloon="Memory" data-balloon-pos="left">{{product.memory}}</span></li>
+                <li><span data-balloon="Storage" data-balloon-pos="left">{{product.storage}}</span></li>
+                <li><span data-balloon="Sims" data-balloon-pos="left">{{product.sims}}</span></li>
+              </ul>
+
+              <span class="product-warranty-label" data-balloon="Yearly Warranty" data-balloon-pos="left">1</span>
+            </div>
+
+
+            <div class="product-content">
+              <h3 class="title" data-balloon="Name" data-balloon-pos="up"><span>{{product.name}}</span></h3>
+              <div class="price" data-balloon="Price" data-balloon-pos="up">
+                {{product.price}}
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-5">
-          <div class="card">
-            <img class="card-img-top" alt="Product Thumbnail Second" src="assets/images/default-product-image.jpg" />
-            <div class="card-block">
-              <h5 class="card-title">
-                Product name
-              </h5>
-              <p class="card-text">
-                Product description
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-5">
-          <div class="card">
-            <img class="card-img-top" alt="Product Thumbnail Third" src="assets/images/default-product-image.jpg" />
-            <div class="card-block">
-              <h5 class="card-title">
-                Product name
-              </h5>
-              <p class="card-text">
-                Product description
-              </p>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>

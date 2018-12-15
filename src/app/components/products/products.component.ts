@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
+import { ParseService } from '../../core/services/parse.service';
+import { Product } from '../../core/models/product-model';
+
 import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-products',
@@ -10,12 +14,32 @@ import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
   animations: [fadeInAnimation]
 })
 export class ProductsComponent implements OnInit {
-  constructor(private titleService: Title) {
+
+  public products: Product[] = [];
+
+  constructor(private titleService: Title, private parseService: ParseService) {
     this.setTitle();
   }
 
   ngOnInit() {
-    // todo load products
+
+    this.getAllProducts();
+  }
+
+  private getAllProducts() {
+
+    this.parseService.getAllProducts()
+      .subscribe(response => {
+
+        // generate list of sample products
+        for (var i = 0; i < 12; i++) {
+          this.products.push(response[0].attributes);
+        }
+
+      },
+        error => { console.log(error) }
+      );
+
   }
 
   private setTitle() {

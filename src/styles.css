@@ -44,7 +44,7 @@ body {
       stroke-dashoffset: 0;
       animation: dash 1.5s ease-in-out infinite;
       stroke-linecap: round;
-      stroke: #42729B;
+      stroke: #117a8b;
     }
 
 @keyframes rotate {
@@ -245,9 +245,14 @@ a, .btn, .dropdown-menu {
   border-bottom: solid .25rem #1a96aa;
 }
 
-  .noti-title label {
-    color: #fff;
-  }
+.inner-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.noti-title label {
+  color: #fff;
+}
 
   .noti-title .text-underline {
     text-decoration: underline;
@@ -274,17 +279,6 @@ a, .btn, .dropdown-menu {
     font-weight: 600;
     line-height: 2.5rem;
   }
-
-.card {
-  border: solid 1px #e2f2ff;
-  box-shadow: 0 0 8px 0 rgba(195,195,195,.74);
-  -webkit-box-shadow: 0 0 8px 0 rgba(195,195,195,.74);
-}
-
-.card-block {
-  padding: .40rem;
-  background-color: #e2f2ff;
-}
 
 /* sweet alert */
 

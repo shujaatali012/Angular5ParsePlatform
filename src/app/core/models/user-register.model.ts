@@ -1,12 +1,12 @@
 export class UserRegister {
-  constructor(firstName?: string, lastName?: string, phone?: string, email?: string, password?: string, confirmPassword?: string, profilePictureUrl?: string, isAgree?: boolean) {
+  constructor(firstName?: string, lastName?: string, phone?: string, email?: string, password?: string, confirmPassword?: string, profilePhoto?: string, isAgree?: boolean) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
     this.email = email;
     this.password = password;
     this.confirmPassword = confirmPassword;
-    this.profilePictureUrl = profilePictureUrl;
+    this.profilePhoto = profilePhoto;
     this.isAgree = isAgree;
   }
 
@@ -16,6 +16,6 @@ export class UserRegister {
   public email: string;
   public password: string;
   public confirmPassword: string;
-  public profilePictureUrl: string;
+  public profilePhoto: string;
   public isAgree: boolean;
 }

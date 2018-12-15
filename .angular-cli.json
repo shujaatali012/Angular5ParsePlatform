@@ -22,6 +22,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/balloon-css/balloon.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/balloon-css/balloon.min.css",
         "styles.css"
       ],
       "scripts": [

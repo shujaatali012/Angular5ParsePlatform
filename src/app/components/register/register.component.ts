@@ -51,8 +51,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
         self.parseService.uploadProfilePicture(this.files[0].name, this.files[0])
           .subscribe(parseFile => {
-
-            self.userRegister.profilePictureUrl = JSON.parse(JSON.stringify(parseFile)).url;
+            //console.log(JSON.parse(JSON.stringify(parseFile)).url);
+            self.userRegister.profilePhoto = JSON.parse(JSON.stringify(parseFile)).url;
             $('#success-message').css('display', 'block');
             $('#error-message').css('display', 'none');
 

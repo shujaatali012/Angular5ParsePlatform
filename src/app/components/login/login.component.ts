@@ -30,6 +30,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.userLogin = new UserLogin();
+    
+    //this.parseService.saveDefaultProducts()
+    //  .subscribe(
+    //  response => { console.log(response); },
+    //  error => { console.log(error) }
+    //);
+    
   }
 
   onSignIn(form: NgForm) {
@@ -56,7 +63,7 @@ export class LoginComponent implements OnInit {
 
         },
           error => {
-
+           
             swal({
               title: 'Error',
               text: error,

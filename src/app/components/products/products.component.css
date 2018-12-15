@@ -1,0 +1,136 @@
+/* product image style */
+
+.product-card, .product-card .product-image {
+  position: relative
+}
+
+.product-card {
+  border-radius: .25rem;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  transition: all .3s ease 0s;
+  box-shadow: 0 0 1rem rgba(0,0,0,.2);
+}
+
+s
+.product-card:hover {
+  box-shadow: 0 0 1.1rem rgba(0,0,0,.4);
+}
+
+.product-card .product-image {
+  padding: 1rem 0;
+  border-bottom: solid .01rem #eee;
+}
+
+  /* product image style */
+  .product-card .product-image a {
+    display: block;
+  }
+
+  .product-card .product-image img {
+    width: 50%;
+    height: 50%;
+    transition: all .5s ease 0s;
+  }
+
+    .product-card .product-image img:hover {
+      width: 55%;
+      height: 55%;
+    }
+
+/* features animation slides */
+.product-card .features {
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  position: absolute;
+  right: 0.4rem;
+  top: 65%;
+  transform: translateY(-50%);
+  transition: all .3s ease 0s;
+}
+
+  .product-card .features li {
+    display: block;
+    opacity: 0;
+    transition: all .7s;
+  }
+
+    .product-card .features li:nth-child(1) {
+      transition-delay: .15s;
+    }
+
+    .product-card .features li:nth-child(2) {
+      transition-delay: .3s;
+    }
+
+    .product-card .features li:nth-child(3) {
+      transition-delay: .45s;
+    }
+
+    .product-card .features li:nth-child(4) {
+      transition-delay: .6s;
+    }
+
+.product-card:hover .features li {
+  opacity: 1;
+}
+
+.product-card .features li span {
+  color: #fff;
+  background: #30a2b8;
+  border-radius: .25rem;
+  margin: .25rem .25rem;
+  padding: .15rem .15rem;
+  display: block;
+  transition: all .3s ease 0s;
+}
+
+  .product-card .features li span:hover {
+    color: #fff;
+    background: #117a8b;
+  }
+
+/* warranty style */
+.product-card .product-warranty-label {
+  color: #fff;
+  background-color: #16a085;
+  font-weight: 600;
+  line-height: 2.7rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 2.5rem;
+  top: 2rem;
+  transition: all .3s;
+}
+
+.product-card .product-warranty-label {
+  left: auto;
+  right: .7rem;
+  background-color: #d7292a;
+}
+
+.product-card .product-content {
+  padding: 0 1rem;
+}
+
+/* title style */
+.product-card .title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: .5rem 0;
+  transition: all .3s ease 0s;
+}
+
+
+/* price style */
+.product-card .price {
+  color: #16a085;
+  font-weight: 600;
+  display: block;
+  margin: .5rem 0;
+}

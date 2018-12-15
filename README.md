@@ -11,7 +11,7 @@ Responsive, Angular5 and Bootstrap4 web application connected with Parse Platfom
 - New user registration
 - Upload profile picture while register new user (need modifications to show profile picture)
 - Login
-- Product page (not complete, just simple design)
+- Product page (shows list of products saved in parse object)
 - Logout
 - Password reset functionality
 - View profile
